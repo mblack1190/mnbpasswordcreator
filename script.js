@@ -1,5 +1,5 @@
 // Assignment code here
-var lowerArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"];
+var lowerArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numberArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialArray = ["!", "@", "#", "$", "%", "^", "&", "*"];
@@ -51,34 +51,41 @@ function getPasswordOptions () {
     return passwordOptions;
 }
 function getIndex(arr) {
-    index = Math.floor(Math.random * arr.length);
-    passwordDigit = arr[index];
+    var index = Math.floor(Math.random() * arr.length);
+    var passwordDigit = arr[index];
     return passwordDigit;
 }
 
 function generatePassword () {
     var options = getPasswordOptions();
+    console.log(options)
     var superArray = [];
     var result = [];
 
     if(options.hasLower) {
-        superArray = superArray.concat(lowerArray)
+        superArray = superArray.concat(lowerArray);
+        console.log(superArray)
     }
     if(options.hasUpper) {
-        superArray = superArray.concat(upperArray)
+        superArray = superArray.concat(upperArray);
+        console.log(superArray)
     }
     if(options.hasNumber) {
-        superArray = superArray.concat(numberArray)
+        superArray = superArray.concat(numberArray);
+        console.log(superArray)
     }
     if(options.hasSpecial) {
-        superArray = superArray.concat(specialArray)
+        superArray = superArray.concat(specialArray);
+        console.log(superArray)
     }
 
 
     for(var i = 0; i < options.length; i++) {
         var possibleChar = getIndex(superArray);
         result.push(possibleChar);
+        console.log(possibleChar)
     }
+    console.log(result)
     return result.join("");
 }
 
@@ -87,7 +94,7 @@ function generatePassword () {
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  var passwordText = document.getElementById("password");
 
   passwordText.value = password;
 
